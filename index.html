@@ -15,15 +15,15 @@
 
     /* ─── Tokens ─────────────────────────────────────── */
     :root {
-      --bg:         #06070e;
-      --bg-2:       #0b0d1c;
-      --bg-3:       #12162a;
-      --accent:     #e080b8;
-      --accent-lo:  rgba(224, 128, 184, 0.12);
-      --text:       #eaecf8;
-      --muted:      #6878a8;
-      --dim:        #253050;
-      --border:     rgba(224, 128, 184, 0.16);
+      --bg:         #1a1a1a;
+      --bg-2:       #242424;
+      --bg-3:       #2d2d2d;
+      --accent:     #d4af37;
+      --accent-lo:  rgba(212, 175, 55, 0.12);
+      --text:       #f5f5f5;
+      --muted:      #a0a0a0;
+      --dim:        #6b6b6b;
+      --border:     rgba(212, 175, 55, 0.2);
       --ff-d:       'Cormorant Garamond', serif;
       --ff-b:       'DM Sans', sans-serif;
       --nav-h:      70px;
@@ -70,12 +70,12 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #06070e;
+      color: #1a1a1a;
       background: var(--accent);
       border-radius: 1px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-fill:hover  { background: #ea96c4; }
+    .btn-fill:hover  { background: #e6c555; }
     .btn-fill:active { transform: scale(0.97) translateY(1px); }
 
     .btn-ghost {
@@ -97,6 +97,22 @@
     .btn-ghost:active { transform: scale(0.97) translateY(1px); }
 
     /* ─── NAV ────────────────────────────────────────── */
+
+        /* Ensure the image assets align perfectly and match original sizing */
+    .social-icon-img {
+      width: 24px;          /* Match original vector bounding boxes */
+      height: 24px;
+      object-fit: contain;  /* Prevents icons from squishing or warping */
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform 0.3s var(--ease);
+    }
+
+    /* Hover effect helper since fill colors won't work on flat PNG images */
+    .social-link:hover .social-icon-img {
+      transform: scale(1.15); /* Adds a subtle interactive pop when highlighted */
+      filter: brightness(1.2); /* Makes them shine slightly on dark themes */
+    }
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -108,7 +124,7 @@
       transition: background 0.45s ease, backdrop-filter 0.45s ease, border-bottom 0.45s ease;
     }
     .nav.scrolled {
-      background: rgba(6, 7, 14, 0.92);
+      background: rgba(26, 26, 26, 0.92);
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
       border-bottom: 1px solid var(--border);
@@ -160,15 +176,11 @@
       align-items: center;
       justify-content: center;
       width: 32px; height: 32px;
-      border: 1px solid var(--dim);
-      border-radius: 50%;
       color: var(--muted);
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      transition: color 0.2s;
     }
     .nav__soc a:hover {
-      border-color: var(--accent);
       color: var(--accent);
-      background: var(--accent-lo);
     }
     .nav__soc a svg { width: 12px; height: 12px; }
 
@@ -190,7 +202,7 @@
       display: none;
       position: fixed;
       top: var(--nav-h); left: 0; right: 0;
-      background: rgba(6, 7, 14, 0.97);
+      background: rgba(26, 26, 26, 0.97);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       padding: 2.5rem clamp(1.5rem, 4vw, 4.5rem) 3.5rem;
@@ -234,17 +246,17 @@
       inset: 0;
       background:
         radial-gradient(ellipse 110% 55% at 50% -5%,
-          rgba(110, 40, 200, 0.48) 0%,
+          rgba(212, 175, 55, 0.42) 0%,
           transparent 58%),
         radial-gradient(ellipse 75% 85% at 50% 50%,
-          rgba(6, 7, 14, 0.08) 0%,
-          rgba(6, 7, 14, 0.55) 52%,
-          rgba(6, 7, 14, 0.97) 100%),
+          rgba(26, 26, 26, 0.08) 0%,
+          rgba(26, 26, 26, 0.55) 52%,
+          rgba(26, 26, 26, 0.97) 100%),
         linear-gradient(to bottom,
-          rgba(6, 7, 14, 0.38) 0%,
-          rgba(6, 7, 14, 0.20) 32%,
-          rgba(6, 7, 14, 0.68) 68%,
-          rgba(6, 7, 14, 1.00) 100%);
+          rgba(26, 26, 26, 0.38) 0%,
+          rgba(26, 26, 26, 0.20) 32%,
+          rgba(26, 26, 26, 0.68) 68%,
+          rgba(26, 26, 26, 1.00) 100%);
     }
 
     .hero__content {
@@ -362,8 +374,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 55% 70% at 100% 100%, rgba(224, 128, 184, 0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 40% 50% at 0% 0%, rgba(110, 40, 200, 0.06) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 70% at 100% 100%, rgba(212, 175, 55, 0.06) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 0% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -389,7 +401,7 @@
         0 2px 4px rgba(0, 0, 0, 0.5),
         0 12px 32px rgba(0, 0, 0, 0.6),
         0 30px 70px rgba(0, 0, 0, 0.55),
-        0 0 0 1px rgba(224, 128, 184, 0.1);
+        0 0 0 1px rgba(212, 175, 55, 0.15);
     }
 
     .music__info .sec-ttl  { margin-bottom: 0.3rem; }
@@ -437,11 +449,11 @@
       align-items: center;
       gap: 1.25rem;
       padding: 0.88rem 0.5rem;
-      border-bottom: 1px solid rgba(224, 128, 184, 0.07);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.12);
       border-radius: 2px;
       transition: background 0.2s;
     }
-    .track:hover { background: rgba(224, 128, 184, 0.06); }
+    .track:hover { background: rgba(212, 175, 55, 0.06); }
     .track__num {
       font-size: 0.72rem;
       color: var(--dim);
@@ -497,94 +509,170 @@
     }
     .era-arrow svg { width: 14px; height: 14px; }
 
-    .eras__strip {
+    /* ─── ERA CAROUSEL ──────────────────────────────── */
+    .eras__carousel {
       flex: 1;
       min-width: 0;
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: clamp(255px, 28vw, 345px);
-      gap: 1.1rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 0.5rem;
-      cursor: grab;
-      user-select: none;
+      position: relative;
+      height: clamp(320px, 42vw, 500px);
+      overflow: hidden;
     }
-    .eras__strip::-webkit-scrollbar { display: none; }
-    .eras__strip.dragging           { cursor: grabbing; scroll-snap-type: none; }
 
     .era-card {
-      scroll-snap-align: start;
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(155px, 19vw, 230px);
       aspect-ratio: 2 / 3;
       overflow: hidden;
       border-radius: 2px;
       cursor: pointer;
+      will-change: transform, opacity;
+      transition:
+        transform 0.62s var(--ease),
+        opacity   0.62s var(--ease);
     }
+
     .era-card img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease), filter 0.4s;
     }
-    .era-card:hover img {
-      transform: scale(1.06);
-      filter: brightness(0.55) saturate(0.55);
+
+    /* ─── Carousel position states ── */
+    .era-card.is-active,
+    .era-card.is-prev,
+    .era-card.is-next,
+    .era-card.is-prev2,
+    .era-card.is-next2 {
+      cursor: pointer;
     }
+    .era-card.is-active {
+      transform: translate(-50%, -50%) scale(1.22);
+      opacity: 1;
+      z-index: 5;
+    }
+    .era-card.is-prev {
+      transform: translate(calc(-50% - clamp(190px, 23vw, 275px)), -50%) scale(0.84);
+      opacity: 0.5;
+      z-index: 4;
+    }
+    .era-card.is-next {
+      transform: translate(calc(-50% + clamp(190px, 23vw, 275px)), -50%) scale(0.84);
+      opacity: 0.5;
+      z-index: 4;
+    }
+    .era-card.is-prev2 {
+      transform: translate(calc(-50% - clamp(355px, 43vw, 510px)), -50%) scale(0.66);
+      opacity: 0.2;
+      z-index: 3;
+    }
+    .era-card.is-next2 {
+      transform: translate(calc(-50% + clamp(355px, 43vw, 510px)), -50%) scale(0.66);
+      opacity: 0.2;
+      z-index: 3;
+    }
+    .era-card.is-hidden {
+      opacity: 0;
+      z-index: 1;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    .era-card.is-active img:hover {
+      transform: scale(1.05);
+      filter: brightness(0.8) saturate(0.7);
+    }
+
+    /* ─── Overlay & text ─────────────────────────────── */
     .era-card__ov {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  /* Seamlessly pulls everything down to the bottom padding */
-  justify-content: flex-end; 
-  padding: 1.4rem 1.25rem;
-  background: linear-gradient(to top,
-    rgba(6, 7, 14, 0.97) 0%,
-    rgba(6, 7, 14, 0.52) 44%,
-    transparent 100%);
-}
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.4rem 1.25rem;
+      background: linear-gradient(to top,
+        rgba(26, 26, 26, 0.97) 0%,
+        rgba(26, 26, 26, 0.52) 44%,
+        transparent 100%);
+    }
 
-/* This structural wrapper keeps your elements stacked and aligned */
-.era-card__ov > div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+    .era-card__ov > div {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
 
-.era-card__year {
-  font-family: var(--ff-b);
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.3rem;
-}
+    /* Text hidden by default, transition in/out */
+    .era-card__year,
+    .era-card__name,
+    .era-card__feat {
+      opacity: 0;
+      transform: translateY(7px);
+      transition:
+        opacity   0.22s ease,
+        transform 0.22s ease;
+    }
 
-.era-card__name {
-  font-family: var(--ff-d);
-  font-size: clamp(1.55rem, 2.8vw, 2.3rem);
-  font-weight: 400;
-  line-height: 1.05;
-  color: var(--text);
-  /* Dynamically reserves vertical space if a title breaks to 2 lines */
-  min-height: 2.6rem;
-  display: flex;
-  align-items: flex-end;
-}
+    /* Active card: staggered fade-up reveal */
+    .era-card.is-active .era-card__year {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity   0.48s var(--ease) 0.28s,
+        transform 0.48s var(--ease) 0.28s;
+    }
+    .era-card.is-active .era-card__name {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity   0.48s var(--ease) 0.36s,
+        transform 0.48s var(--ease) 0.36s;
+    }
+    .era-card.is-active .era-card__feat {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity   0.48s var(--ease) 0.44s,
+        transform 0.48s var(--ease) 0.44s;
+    }
 
-.era-card__feat {
-  font-family: var(--ff-d);
-  font-style: italic;
-  font-size: 0.88rem;
-  font-weight: 300;
-  color: var(--muted);
-  margin-top: 0.3rem;
-  /* Reserves an uncollapsible baseline for tracks without features */
-  min-height: 1.2rem;
-}
+    .era-card__year {
+      font-family: var(--ff-b);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .era-card__name {
+      font-family: var(--ff-d);
+      font-size: clamp(1.55rem, 2.8vw, 2.3rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--text);
+      min-height: 2.6rem;
+      display: flex;
+      align-items: flex-end;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      text-align: left;
+    }
+
+    .era-card__feat {
+      font-family: var(--ff-d);
+      font-style: italic;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      min-height: 1.2rem;
+    }
 
     /* ─── BIO ────────────────────────────────────────── */
     #bio { background: var(--bg-3); position: relative; overflow: hidden; }
@@ -593,8 +681,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 50% 60% at 88% 30%, rgba(224, 128, 184, 0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 55% at 5% 80%, rgba(110, 40, 200, 0.05) 0%, transparent 55%);
+        radial-gradient(ellipse 50% 60% at 88% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 55% at 5% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 55%);
       pointer-events: none;
     }
 
@@ -616,34 +704,71 @@
     }
     .bio__text p:last-child { margin-bottom: 0; }
     .bio__text strong { color: var(--text); font-weight: 500; }
+/* ─── POLAROID STACK CONTAINER ─── */
+/* Container to group and stack the polaroids */
+.polaroid-stack {
+  position: relative;
 
-    /* Polaroid — tilted toward the text on its left */
-    .polaroid {
-      flex-shrink: 0;
-      width: clamp(230px, 26vw, 320px);
-      background: #f4f1ea;
-      padding: 0.9rem 0.9rem 0;
-      border-radius: 2px;
-      box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.4),
-        0 18px 50px rgba(0, 0, 0, 0.55);
-      transform: rotate(-5deg);
-      transition: transform 0.5s var(--ease);
-    }
-    .polaroid:hover { transform: rotate(-2deg) translateY(-6px); }
-    .polaroid img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
-    .polaroid__cap {
-      font-family: var(--ff-d);
-      font-style: italic;
-      font-size: 1.15rem;
-      color: #2a2a2a;
-      text-align: center;
-      padding: 0.85rem 0.5rem 1.1rem;
-    }
+  /* Match the exact responsive sizing of your old single polaroid card */
+  width: clamp(230px, 26vw, 320px);
+
+  /* Give the container a forced physical height so it doesn't collapse to 0px */
+  aspect-ratio: 1 / 1.15;
+
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+/* Individual Polaroid Base styles */
+.polaroid {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* Fill up 100% of the parent stack's width */
+  width: 100%;
+
+  background: #f4f1ea;
+  padding: 0.9rem 0.9rem 2rem; /* Empty space at bottom */
+  border-radius: 2px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    0 18px 50px rgba(0, 0, 0, 0.55);
+
+  transition: transform 0.5s var(--ease), z-index 0.5s var(--ease);
+}
+/* ─── POLAROID IMAGE ─── */
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── BASE POSITION LAYOUTS (STATIC STACK) ─── */
+.polaroid--bottom {
+  z-index: 1;
+  /* Shifted from -120px to -150px to push it further left. Y position (-25px) stays exactly the same. */
+  transform: rotate(-12deg) translate(-150px, -25px);
+}
+
+.polaroid--top {
+  z-index: 2;
+  /* Kept exactly the same as your previous good layout */
+  transform: rotate(4deg) translate(-30px, 15px);
+}
+
+/* ─── INTERACTIVE HOVER SCATTER ─── */
+.polaroid-stack:hover .polaroid--bottom {
+  /* Adjusted the hover endpoint slightly to match the new starting momentum */
+  transform: rotate(-18deg) translate(-190px, -35px);
+}
+
+.polaroid-stack:hover .polaroid--top {
+  /* Kept exactly the same as your previous good layout */
+  transform: rotate(8deg) translate(10px, 25px);
+  z-index: 3;
+}
 
     /* ─── GALLERY ────────────────────────────────────── */
     #gallery { background: var(--bg-2); position: relative; overflow: hidden; }
@@ -683,16 +808,29 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 65% 65% at 12% 55%, rgba(224, 128, 184, 0.08) 0%, transparent 65%),
-        radial-gradient(ellipse 45% 55% at 88% 20%, rgba(110, 40, 200, 0.06) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(224, 128, 184, 0.05) 0%, transparent 60%);
+        radial-gradient(ellipse 65% 65% at 12% 55%, rgba(212, 175, 55, 0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 55% at 88% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(212, 175, 55, 0.04) 0%, transparent 60%);
       pointer-events: none;
     }
 
-    .letter__inner { max-width: 680px; }
+    .letter__layout {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: clamp(2.5rem, 6vw, 6.5rem);
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .letter__cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
 
     .letter__body {
-      margin: 2.2rem 0 3rem;
+      max-width: 620px;
     }
     .letter__body p {
       font-family: var(--ff-d);
@@ -713,6 +851,34 @@
       color: var(--accent);
       letter-spacing: 0.04em;
       margin-top: 2.5rem;
+    }
+
+    /* ─── Enhanced Button Animations ────────────────────────── */
+    .btn-fill {
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s ease, transform 0.15s, box-shadow 0.25s ease;
+    }
+    .btn-fill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 55%);
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: opacity 0.4s ease, transform 0.6s ease;
+    }
+    .btn-fill:hover {
+      background: linear-gradient(135deg, #e6c555 0%, #d4af37 100%);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.38);
+      transform: translateY(-2px);
+    }
+    .btn-fill:hover::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .btn-fill:active {
+      transform: translateY(0) scale(0.98);
     }
 
     /* ─── FOOTER ─────────────────────────────────────── */
@@ -747,15 +913,11 @@
       align-items: center;
       justify-content: center;
       width: 36px; height: 36px;
-      border: 1px solid var(--dim);
-      border-radius: 50%;
       color: var(--muted);
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      transition: color 0.2s;
     }
     .ft__soc a:hover {
-      border-color: var(--accent);
       color: var(--accent);
-      background: var(--accent-lo);
     }
     .ft__soc a svg { width: 13px; height: 13px; }
 
@@ -766,7 +928,7 @@
       flex-wrap: wrap;
       gap: 1.25rem;
       padding-top: 1.75rem;
-      border-top: 1px solid rgba(37, 48, 80, 0.6);
+      border-top: 1px solid rgba(107, 107, 107, 0.3);
     }
     .ft__copy {
       font-size: 0.67rem;
@@ -782,7 +944,7 @@
       color: var(--accent);
       transition: color 0.2s;
     }
-    .ft__made a:hover { color: #ea96c4; }
+    .ft__made a:hover { color: #e6c555; }
     .ft__legal {
       display: flex;
       gap: 1.75rem;
@@ -809,7 +971,12 @@
 
       .eras__row               { gap: 0.6rem; }
       .era-arrow               { width: 34px; height: 34px; }
-      .eras__strip             { grid-auto-columns: 72vw; }
+      .eras__carousel          { height: clamp(260px, 55vw, 360px); }
+      .era-card                { width: clamp(110px, 30vw, 165px); }
+      .era-card.is-prev        { transform: translate(calc(-50% - clamp(130px, 34vw, 190px)), -50%) scale(0.82); }
+      .era-card.is-next        { transform: translate(calc(-50% + clamp(130px, 34vw, 190px)), -50%) scale(0.82); }
+      .era-card.is-prev2       { transform: translate(calc(-50% - clamp(245px, 63vw, 350px)), -50%) scale(0.66); }
+      .era-card.is-next2       { transform: translate(calc(-50% + clamp(245px, 63vw, 350px)), -50%) scale(0.66); }
 
       .bio__layout             { grid-template-columns: 1fr; gap: 2.75rem; justify-items: center; }
       .bio__text p             { max-width: none; }
@@ -827,55 +994,42 @@
   <nav class="nav" id="nav">
     <a class="nav__logo" href="#">XAV</a>
     <ul class="nav__links">
-      <li><a href="#music">Music</a></li>
-      <li><a href="#eras">Archive</a></li>
+      <li><a href="#eras">Music</a></li>
       <li><a href="#bio">Bio</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#letter">Letter</a></li>
-      <li><a href="mailto:weblumepro@gmail.com">Contact</a></li>
+      <li><a href="mailto:Matt@rp-rt.com">Contact</a></li>
     </ul>
     <div class="nav__soc">
-          <a href="https://open.spotify.com/artist/7bwDS7qDrfGXPiN0Bx5g8k?si=GcyjlPjnTaiRTmLBtpF7Vw&utm_medium=share&utm_source=linktree&nd=1&dlsi=8c0b3dd82e6d49df" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-            </svg>
-          </a>
 
-          <a href="https://music.apple.com/ca/artist/xav/1409771463" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm1 4.732a.75.75 0 0 0-1.163-.632l-3.5 2.333A.75.75 0 0 0 8 9.066V15.5a2.5 2.5 0 1 0 1.5 2.288V11.23l2.5-1.666v3.936a2.5 2.5 0 1 0 1.5 2.288V6.732z"/>
-            </svg>
-          </a>
+        <a href="https://open.spotify.com/artist/7bwDS7qDrfGXPiN0Bx5g8k?si=GcyjlPjnTaiRTmLBtpF7Vw&utm_medium=share&utm_source=linktree&nd=1&dlsi=8c0b3dd82e6d49df" target="_blank" rel="noopener noreferrer" aria-label="Spotify" class="social-link">
+          <img src="spotify.png" alt="Spotify" class="social-icon-img" />
+        </a>
 
-          <a href="https://www.instagram.com/xavtrudeau_?igsh=OXFyamR1b3ZydHNn&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0 3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
+        <a href="https://music.apple.com/ca/artist/xav/1409771463" target="_blank" rel="noopener noreferrer" aria-label="Apple Music" class="social-link">
+          <img src="AppleMusic.png" alt="Apple Music" class="social-icon-img" />
+        </a>
 
-          <a href="https://www.tiktok.com/@xavtrudeau" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-            </svg>
-          </a>
+        <a href="https://www.instagram.com/xavtrudeau_?igsh=OXFyamR1b3ZydHNn&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+          <img src="instagram.png" alt="Instagram" class="social-icon-img" />
+        </a>
 
-          <a href="https://www.youtube.com/@xavtrudeau" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
-            </svg>
-          </a>
+        <a href="https://www.tiktok.com/@xavtrudeau" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-link">
+          <img src="tiktok.png" alt="TikTok" class="social-icon-img" />
+        </a>
 
-          <a href="https://www.snapchat.com/@xavtrudeau" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.75c-2.85 0-4.75 1.62-4.75 4.34 0 .5.05.86.15 1.12.1.28.84.97.84 1.36 0 .32-.39.58-.78.85-.29.2-.61.42-.84.7-.3.37-.42.86-.35 1.37.1.73.74 1.11 1.33 1.11.19 0 .38-.04.57-.1.13-.03.25-.07.38-.07.3 0 .37.31.37.47 0 1.13-.99 1.74-.99 3.03 0 1.97 2.1 3.12 4.45 3.12 2.35 0 4.45-1.15 4.45-3.12 0-1.29-.99-1.9-0.99-3.03 0-.16.07-.47.37-.47.13 0 .25.04.38.07.19.06.38.1 0.57.1.59 0 1.23-.38 1.33-1.11.07-.51-.05-1-.35-1.37-.23-.28-.55-.5-.84-.7-.39-.27-.78-.53-.78-.85 0-.39.74-1.08.84-1.36.1-.26.15-.62.15-1.12 0-2.72-1.9-4.34-4.75-4.34z"/>
-            </svg>
-          </a>
+        <a href="https://www.youtube.com/@xavtrudeau" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-link">
+          <img src="youtube.png" alt="YouTube" class="social-icon-img" />
+        </a>
 
-          <a href="https://www.facebook.com/profile.php?id=61575758736001" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-            </svg>
-          </a>
+        <a href="https://www.snapchat.com/@xavtrudeau" target="_blank" rel="noopener noreferrer" aria-label="Snapchat" class="social-link">
+          <img src="snapchat.png" alt="Snapchat" class="social-icon-img" />
+        </a>
+
+        <a href="https://www.facebook.com/profile.php?id=61575758736001" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link">
+          <img src="Facebook.png" alt="Facebook" class="social-icon-img" />
+        </a>
+
     </div>
     <button class="nav__burger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -883,8 +1037,7 @@
   </nav>
 
   <div class="nav__mob" id="mob">
-    <a href="#music"   onclick="closeMob()">Music</a>
-    <a href="#eras"    onclick="closeMob()">Archive</a>
+    <a href="#eras"   onclick="closeMob()">Music</a>
     <a href="#bio"     onclick="closeMob()">Bio</a>
     <a href="#gallery" onclick="closeMob()">Gallery</a>
     <a href="#letter"  onclick="closeMob()">Letter</a>
@@ -899,7 +1052,7 @@
       <h1 class="hero__name">XAV</h1>
       <p class="hero__sub">feat. Duava</p>
       <div class="hero__btns">
-        <a href="#music" class="btn-fill">Listen Now</a>
+        <a href="#eras" class="btn-fill">Listen Now</a>
       </div>
     </div>
 
@@ -909,97 +1062,6 @@
     </div>
   </section>
 
-  <!-- ─── MUSIC ─────────────────────────────────────────── -->
-  <!--section class="sec" id="music">
-    <div class="sec__in">
-
-      <div class="sec-ttl reveal">The Dive</div>
-
-      <div class="music__layout">
-
-        <div class="music__cover reveal d1">
-          <img
-            src="https://picsum.photos/seed/xav-thedive-cover/500/500"
-            alt="The Dive — Xav feat. Duava"
-          />
-        </div>
-
-        <div class="music__info reveal d2">
-          <div class="music__meta">feat. Duava &nbsp;&middot;&nbsp; Single &nbsp;&middot;&nbsp; 2024</div>
-
-          <div class="music__plats">
-            <a href="#" class="music__plat" aria-label="Listen on Spotify">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-              </svg>
-              Spotify
-            </a>
-            <a href="#" class="music__plat" aria-label="Listen on Apple Music">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a5.485 5.485 0 00-.36 1.582c-.06.55-.077 1.105-.077 1.656v10.99c0 .55.016 1.1.075 1.65.08.71.262 1.39.612 2.01.63 1.12 1.57 1.89 2.83 2.26.55.16 1.11.25 1.68.27.54.02 1.08.03 1.62.03h10.47c.55 0 1.1-.01 1.64-.03.56-.02 1.12-.11 1.66-.27 1.26-.37 2.2-1.14 2.83-2.26.35-.62.53-1.3.61-2.01.06-.55.077-1.1.077-1.65V6.124zm-8.656 1.657H9.07V14.5a2.071 2.071 0 01-2.07 2.072A2.071 2.071 0 014.929 14.5a2.071 2.071 0 012.072-2.072c.38 0 .734.103 1.04.284V5.48h7.297v2.3z"/>
-              </svg>
-              Apple Music
-            </a>
-            <a href="#" class="music__plat" aria-label="Listen on YouTube Music">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.108V8.892L15.9 12l-6.216 3.108z"/>
-              </svg>
-              YouTube Music
-            </a>
-            <a href="#" class="music__plat" aria-label="Listen on SoundCloud">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M1.175 12.225c-.015 0-.023.01-.023.023l-.69 4.148.69 4.148c0 .013.008.023.023.023s.023-.01.023-.023l.794-4.148-.794-4.148c0-.013-.008-.023-.023-.023zm1.606-.61c-.018 0-.03.013-.03.03l-.579 4.757.579 4.757c0 .017.012.03.03.03s.03-.013.03-.03l.662-4.757-.662-4.757c0-.017-.012-.03-.03-.03zm1.596-.234c-.02 0-.036.016-.036.036l-.468 4.992.468 4.992c0 .02.016.036.036.036s.036-.016.036-.036l.533-4.992-.533-4.992c0-.02-.016-.036-.036-.036zm1.698-.163c-.023 0-.042.019-.042.042l-.357 5.155.357 5.155c0 .023.019.042.042.042s.042-.019.042-.042l.407-5.155-.407-5.155c0-.023-.019-.042-.042-.042zm1.596.035c-.026 0-.047.021-.047.047l-.247 5.12.247 5.12c0 .026.021.047.047.047s.047-.021.047-.047l.282-5.12-.282-5.12c0-.026-.021-.047-.047-.047zm1.598-.186c-.028 0-.051.023-.051.051l-.137 5.306.137 5.306c0 .028.023.051.051.051s.051-.023.051-.051l.157-5.306-.157-5.306c0-.028-.023-.051-.051-.051zm1.599.263c-.032 0-.057.026-.057.057l-.027 5.043.027 5.043c0 .032.026.057.057.057s.057-.026.057-.057l.03-5.043-.03-5.043c0-.032-.026-.057-.057-.057zm5.882-2.512c-.143 0-.283.013-.42.038-.29-3.27-3.024-5.815-6.368-5.815-1.025 0-1.999.245-2.856.68-.317.155-.402.313-.405.454v11.495c.003.146.113.264.257.278h9.792c.703 0 1.274-.57 1.274-1.274V11.35c0-2.12-1.72-3.84-3.84-3.84z"/>
-              </svg>
-              SoundCloud
-            </a>
-          </div>
-
-          <div class="tracks">
-            <div class="track">
-              <span class="track__num">01</span>
-              <div class="track__title-wrap">
-                <div class="track__title">The Dive</div>
-                <div class="track__feat">feat. Duava</div>
-              </div>
-              <span class="track__dur">3:04</span>
-            </div>
-            <div class="track">
-              <span class="track__num">02</span>
-              <div class="track__title-wrap">
-                <div class="track__title">Don't Break My Fall</div>
-                <div class="track__feat">feat. Duava, Arty Warhol</div>
-              </div>
-              <span class="track__dur">3:51</span>
-            </div>
-            <div class="track">
-              <span class="track__num">03</span>
-              <div class="track__title-wrap">
-                <div class="track__title">Back Me Up</div>
-              </div>
-              <span class="track__dur">2:54</span>
-            </div>
-            <div class="track">
-              <span class="track__num">04</span>
-              <div class="track__title-wrap">
-                <div class="track__title">Til The Nights Done</div>
-              </div>
-              <span class="track__dur">3:20</span>
-            </div>
-            <div class="track">
-              <span class="track__num">05</span>
-              <div class="track__title-wrap">
-                <div class="track__title">Everything I Know</div>
-              </div>
-              <span class="track__dur">2:25</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section!-->
-
-  
   <!-- ─── ERA ARCHIVE ──────────────────────────────────── -->
   <section class="sec" id="eras">
     <div class="sec__in">
@@ -1015,10 +1077,10 @@
           </svg>
         </button>
 
-        <div class="eras__strip" id="erasStrip">
+        <div class="eras__carousel" id="erasCarousel">
 
           <div class="era-card">
-            <img src="TheDive.jpg" alt="The Dive" class="w-full aspect-square object-cover" />
+            <img src="TheDive.jpg" alt="The Dive" />
             <div class="era-card__ov">
               <div>
                 <div class="era-card__year">2025</div>
@@ -1029,7 +1091,7 @@
           </div>
 
           <div class="era-card">
-            <img src="WhenDoesItEnd.jpg" alt="When Does It End" class="w-full aspect-square object-cover" />
+            <img src="WhenDoesItEnd.jpg" alt="When Does It End" />
             <div class="era-card__ov">
               <div>
                 <div class="era-card__year">2025</div>
@@ -1040,7 +1102,7 @@
           </div>
 
           <div class="era-card">
-            <img src="DontBreakMyFall.jpg" alt="Don't Break My Fall" class="w-full aspect-square object-cover" />
+            <img src="DontBreakMyFall.jpg" alt="Don't Break My Fall" />
             <div class="era-card__ov">
               <div>
                 <div class="era-card__year">2025</div>
@@ -1051,7 +1113,7 @@
           </div>
 
           <div class="era-card">
-            <img src="BackMeUp.jpg" alt="Back Me Up" class="w-full aspect-square object-cover" />
+            <img src="BackMeUp.jpg" alt="Back Me Up" />
             <div class="era-card__ov">
               <div>
                 <div class="era-card__year">2025</div>
@@ -1062,7 +1124,7 @@
           </div>
 
           <div class="era-card">
-            <img src="TilTheNightsDone.jpg" alt="Til The Nights Done" class="w-full aspect-square object-cover" />
+            <img src="TilTheNightsDone.jpg" alt="Til The Nights Done" />
             <div class="era-card__ov">
               <div>
                 <div class="era-card__year">2025</div>
@@ -1073,7 +1135,7 @@
           </div>
 
           <div class="era-card">
-            <img src="EverythingIKnow.jpg" alt="Everything I Know" class="w-full aspect-square object-cover" />
+            <img src="EverythingIKnow.jpg" alt="Everything I Know" />
             <div class="era-card__ov">
               <div>
                 <div class="era-card__year">2025</div>
@@ -1091,8 +1153,8 @@
           </svg>
         </button>
 
-      </div> 
-    </div> 
+      </div>
+    </div>
   </section>
 
   <!-- ─── BIO ───────────────────────────────────────────── -->
@@ -1122,12 +1184,17 @@
           </p>
         </div>
 
-        <div class="polaroid reveal d2">
-          <img
-            src="https://picsum.photos/seed/xav-portrait/500/500"
-            alt="Portrait of Xav"
-          />
-          <div class="polaroid__cap">Xav, 2024</div>
+        <div class="polaroid-stack reveal d2">
+
+          <div class="polaroid-stack reveal d2">
+            <div class="polaroid polaroid--bottom">
+              <img src="Xav1.png" alt="Portrait of Xav" />
+            </div>
+            <div class="polaroid polaroid--top">
+              <img src="Xav2.png" alt="Xav performing live" />
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -1167,25 +1234,30 @@
   <!-- ─── LETTER ────────────────────────────────────────── -->
   <section class="sec" id="letter">
     <div class="sec__in">
-      <div class="letter__inner">
-        <div class="sec-ttl reveal">From Xav</div>
-        <div class="letter__body">
-          <p class="reveal d2">
-            Every song I put out starts from the same place &mdash; a feeling I
-            couldn&rsquo;t shake. The Dive came from a night where I had to choose
-            between holding on and letting go. I chose both.
-          </p>
-          <p class="reveal d3">
-            I never planned any of this. I just kept making things that felt true.
-            If you found your way here, that means something to me. These songs are
-            yours as much as they are mine &mdash; do what you need to do with them.
-          </p>
-          <p class="reveal d4">
-            The road is long and I&rsquo;m still figuring it out. But I&rsquo;d
-            rather figure it out with you in the room than anywhere else.
-          </p>
+      <div class="sec-ttl reveal">From Xav</div>
+      <div class="letter__layout">
+        <div class="letter__cta reveal d1">
+          <a href="mailto:Matt@rp-rt.com" class="btn-fill">Contact</a>
         </div>
-        <div class="letter__sig reveal d4">&mdash; Xav</div>
+        <div>
+          <div class="letter__body">
+            <p class="reveal d2">
+              Every song I put out starts from the same place &mdash; a feeling I
+              couldn&rsquo;t shake. The Dive came from a night where I had to choose
+              between holding on and letting go. I chose both.
+            </p>
+            <p class="reveal d3">
+              I never planned any of this. I just kept making things that felt true.
+              If you found your way here, that means something to me. These songs are
+              yours as much as they are mine &mdash; do what you need to do with them.
+            </p>
+            <p class="reveal d4">
+              The road is long and I&rsquo;m still figuring it out. But I&rsquo;d
+              rather figure it out with you in the room than anywhere else.
+            </p>
+          </div>
+          <div class="letter__sig reveal d4">&mdash; Xav</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1252,61 +1324,91 @@
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* ── Era strip: mouse drag ── */
-const strip = document.getElementById('erasStrip');
-    let isDragging = false;
-    let dragStartX  = 0;
-    let scrollStart = 0;
+    /* ── Era carousel: infinite cycle with center highlight ── */
+    const carousel = document.getElementById('erasCarousel');
+    const cards   = Array.from(document.querySelectorAll('#erasCarousel .era-card'));
+    const total   = cards.length;
+    let current   = 0;
 
-    strip.addEventListener('mousedown', e => {
-      isDragging  = true;
-      dragStartX  = e.pageX - strip.offsetLeft;
-      scrollStart = strip.scrollLeft;
-      strip.classList.add('dragging');
-    });
+    const posClasses = ['is-active', 'is-prev', 'is-next', 'is-prev2', 'is-next2', 'is-hidden'];
 
-    window.addEventListener('mouseup', () => {
-      if (isDragging) {
-        isDragging = false;
-        strip.classList.remove('dragging');
-      }
-    });
+    function updateCarousel() {
+      cards.forEach((card, i) => {
+        card.classList.remove(...posClasses);
 
-    strip.addEventListener('mouseleave', () => {
-      if (isDragging) {
-        isDragging = false;
-        strip.classList.remove('dragging');
-      }
-    });
+        let offset = i - current;
 
-    strip.addEventListener('mousemove', e => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x    = e.pageX - strip.offsetLeft;
-      const walk = (x - dragStartX) * 1.4;
-      strip.scrollLeft = scrollStart - walk;
-    });
+        /* Wrap to shortest path around the cycle */
+        if (offset > total / 2)  offset -= total;
+        if (offset < -total / 2) offset += total;
 
-    /* ── Era strip: arrow buttons with manual wrap-around ── */
-    const cardWidth = () => strip.querySelector('.era-card').offsetWidth + 18;
+        if      (offset ===  0) card.classList.add('is-active');
+        else if (offset === -1) card.classList.add('is-prev');
+        else if (offset ===  1) card.classList.add('is-next');
+        else if (offset === -2) card.classList.add('is-prev2');
+        else if (offset ===  2) card.classList.add('is-next2');
+        else                    card.classList.add('is-hidden');
+      });
+    }
 
     document.getElementById('eraLeft').addEventListener('click', () => {
-      // If we are at the very start (or close to it), wrap smoothly to the far right edge
-      if (strip.scrollLeft <= 5) {
-        strip.scrollTo({ left: strip.scrollWidth, behavior: 'smooth' });
-      } else {
-        strip.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
-      }
+      current = (current - 1 + total) % total;
+      updateCarousel();
     });
 
     document.getElementById('eraRight').addEventListener('click', () => {
-      // If we are at the far right edge (with a small buffer), wrap smoothly back to the first song
-      if (strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 15) {
-        strip.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        strip.scrollBy({ left: cardWidth(), behavior: 'smooth' });
-      }
+      current = (current + 1) % total;
+      updateCarousel();
     });
+
+    /* Click on any visible card to select it */
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        current = idx;
+        updateCarousel();
+      });
+    });
+
+    /* Trackpad / touch swipe support */
+    let touchStartX = 0;
+    let touchEndX   = 0;
+    let isDragging  = false;
+
+    carousel.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      isDragging  = true;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      touchEndX = e.touches[0].clientX;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) { current = (current + 1) % total; }
+        else          { current = (current - 1 + total) % total; }
+        updateCarousel();
+      }
+      touchStartX = 0;
+      touchEndX   = 0;
+    }, { passive: true });
+
+    /* Mouse wheel / trackpad swipe support */
+    carousel.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 15) {
+        e.preventDefault();
+        if (e.deltaX > 0) { current = (current + 1) % total; }
+        else              { current = (current - 1 + total) % total; }
+        updateCarousel();
+      }
+    }, { passive: false });
+
+    /* Initialise on load */
+    updateCarousel();
   </script>
 
 </body>
