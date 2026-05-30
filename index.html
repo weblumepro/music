@@ -585,6 +585,20 @@
       filter: brightness(0.8) saturate(0.7);
     }
 
+    /* Hover scale on carousel cards */
+    .era-card.is-prev:hover,
+    .era-card.is-next:hover,
+    .era-card.is-prev2:hover,
+    .era-card.is-next2:hover {
+      transform: translate(var(--tx), -50%) scale(calc(var(--scale) * 1.08));
+      opacity: 0.65;
+    }
+
+    .era-card.is-prev { --tx: calc(-50% - clamp(190px, 23vw, 275px)); --scale: 0.84; }
+    .era-card.is-next { --tx: calc(-50% + clamp(190px, 23vw, 275px)); --scale: 0.84; }
+    .era-card.is-prev2 { --tx: calc(-50% - clamp(355px, 43vw, 510px)); --scale: 0.66; }
+    .era-card.is-next2 { --tx: calc(-50% + clamp(355px, 43vw, 510px)); --scale: 0.66; }
+
     /* ─── Overlay & text ─────────────────────────────── */
     .era-card__ov {
       position: absolute;
@@ -816,7 +830,7 @@
 
     .letter__layout {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto 1fr auto;
       gap: clamp(2.5rem, 6vw, 6.5rem);
       align-items: start;
       margin-top: 3rem;
@@ -830,7 +844,14 @@
     }
 
     .letter__body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .letter__body > div {
       max-width: 620px;
+      text-align: right;
     }
     .letter__body p {
       font-family: var(--ff-d);
@@ -857,19 +878,19 @@
     .btn-fill {
       position: relative;
       overflow: hidden;
+      background: var(--accent);
       transition: background 0.25s ease, transform 0.15s, box-shadow 0.25s ease;
     }
     .btn-fill::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 55%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, transparent 60%);
       opacity: 0;
       transform: translateX(-100%);
-      transition: opacity 0.4s ease, transform 0.6s ease;
+      transition: opacity 0.35s ease, transform 0.55s ease;
     }
     .btn-fill:hover {
-      background: linear-gradient(135deg, #e6c555 0%, #d4af37 100%);
       box-shadow: 0 8px 24px rgba(212, 175, 55, 0.38);
       transform: translateY(-2px);
     }
@@ -1239,8 +1260,9 @@
         <div class="letter__cta reveal d1">
           <a href="mailto:Matt@rp-rt.com" class="btn-fill">Contact</a>
         </div>
-        <div>
-          <div class="letter__body">
+        <div></div>
+        <div class="letter__body">
+          <div>
             <p class="reveal d2">
               Every song I put out starts from the same place &mdash; a feeling I
               couldn&rsquo;t shake. The Dive came from a night where I had to choose
@@ -1255,8 +1277,8 @@
               The road is long and I&rsquo;m still figuring it out. But I&rsquo;d
               rather figure it out with you in the room than anywhere else.
             </p>
+            <div class="letter__sig reveal d4">&mdash; Xav</div>
           </div>
-          <div class="letter__sig reveal d4">&mdash; Xav</div>
         </div>
       </div>
     </div>
