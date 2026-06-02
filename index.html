@@ -177,7 +177,6 @@
       margin-left: auto;
       list-style: none;
     }
-    /* Increased nav link font size from 0.68rem to 0.85rem */
     .nav__links a {
       font-size: 0.85rem;
       font-weight: 500;
@@ -425,7 +424,7 @@
     .hero__photo {
       position: absolute;
       inset: 0;
-      background: url('xav_concert_photo.jpg') center center / cover no-repeat;
+      background: url('Hero.JPEG') center center / cover no-repeat;
     }
     .hero__photo::after {
       content: '';
@@ -453,7 +452,8 @@
       flex-direction: column;
       align-items: center;
       gap: 1.1rem;
-      padding: var(--nav-h) 2rem 5rem;
+      /* Moved text down by adding extra top padding */
+      padding: calc(var(--nav-h) + 5rem) 2rem 5rem;
     }
 
     .hero__eyebrow {
@@ -538,7 +538,6 @@
     }
 
     /* ─── Section Shared ─────────────────────────────── */
-    /* Reduced vertical padding to tighten inter-section spacing */
     .sec {
       padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 5rem);
       scroll-margin-top: 70px;
@@ -900,6 +899,8 @@
       aspect-ratio: 1 / 1.15;
       margin: 0 auto;
       flex-shrink: 0;
+      /* Shift the stack left */
+      transform: translateX(-40px);
     }
 
     .polaroid {
@@ -923,24 +924,30 @@
       display: block;
     }
 
-    .polaroid--bottom {
-      z-index: 1;
-      transform: rotate(-12deg) translate(-150px, -25px);
-    }
+.polaroid--bottom {
+  z-index: 1;
+  /* Moved left: changed -150px to -180px */
+  transform: rotate(-12deg) translate(-180px, -25px);
+  transition: transform 0.3s ease; /* Added for smooth animation */
+}
 
-    .polaroid--top {
-      z-index: 2;
-      transform: rotate(4deg) translate(-30px, 15px);
-    }
+.polaroid--top {
+  z-index: 2;
+  /* Moved right: changed -30px to 0px */
+  transform: rotate(4deg) translate(0px, 15px);
+  transition: transform 0.3s ease; 
+}
 
-    .polaroid-stack:hover .polaroid--bottom {
-      transform: rotate(-18deg) translate(-190px, -35px);
-    }
+.polaroid-stack:hover .polaroid--bottom {
+  /* Moved further left on hover: changed -190px to -230px */
+  transform: rotate(-18deg) translate(-230px, -35px);
+}
 
-    .polaroid-stack:hover .polaroid--top {
-      transform: rotate(8deg) translate(10px, 25px);
-      z-index: 3;
-    }
+.polaroid-stack:hover .polaroid--top {
+  /* Moved further right on hover: changed 10px to 40px */
+  transform: rotate(8deg) translate(40px, 25px);
+  z-index: 3;
+}
 
     /* ─── GALLERY ────────────────────────────────────── */
     #gallery { background: var(--bg-2); position: relative; overflow: hidden; }
@@ -982,6 +989,7 @@
       overflow: hidden;
       background: var(--bg-2);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      border: 8px solid #ffffff;
     }
 
     .video__container iframe {
@@ -989,6 +997,7 @@
       height: 100%;
       border: none;
     }
+
 
     /* ─── LETTER ─────────────────────────────────────── */
     #letter {
@@ -1001,7 +1010,7 @@
     #letter__bg {
       position: absolute;
       inset: 0;
-      background: url('concert2.png');
+      background: url('Hero2.JPEG');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -1065,7 +1074,6 @@
       flex-wrap: wrap;
     }
 
-    /* Fixed-size large buttons for the From Xav section */
     .letter__buttons .btn-fill,
     .letter__buttons .btn-ghost {
       width: 240px;
@@ -1184,21 +1192,6 @@
 
     .ft__made a:hover { color: #e6c555; }
 
-    .ft__legal {
-      display: flex;
-      gap: 1.75rem;
-    }
-
-    .ft__legal a {
-      font-size: 0.67rem;
-      color: var(--dim);
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .ft__legal a:hover { color: var(--muted); }
-
     /* ─── Responsive ─────────────────────────────────── */
     @media (max-width: 768px) {
       .nav__links              { display: none; }
@@ -1221,6 +1214,7 @@
 
       .bio__layout             { grid-template-columns: 1fr; gap: 2.75rem; justify-items: center; }
       .bio__text p             { max-width: none; }
+      .polaroid-stack          { transform: none; }
 
       .gallery__grid           { grid-template-columns: repeat(2, 1fr); }
 
@@ -1425,15 +1419,15 @@
       <div class="bio__layout">
         <div class="bio__text reveal d1">
           <p>
-            <strong>Xav</strong> launched his music career in early 2025, quickly establishing himself as a fresh voice in the Canadian R&B landscape. In less than a year, he rolled out a string of atmospheric singles—including his debut track "Til The Nights Done," followed by "Everything I Know" and "Back Me Up"—each accompanied by cinematic music videos that fueled his early momentum and viral digital footprint. Defined by moody production, melodic precision, and an unyielding commitment to forge his own path entirely independent of his family's political legacy, Xav has turned early industry intrigue into a dedicated, fast-growing movement. With thousands of global listeners amassed in such short time, he is actively carving out his own distinct space in the industry through consistent releases and a direct, unfiltered connection to his audience.
+            <strong>Xav</strong> launched his music career in early 2025, quickly establishing himself as a fresh voice in the Canadian R&B landscape. In less than a year, he rolled out a string of atmospheric singles—including his debut track "Til The Nights Done," followed by "Everything I Know" and "Back Me Up" Defined by moody production, melodic precision, and an unyielding commitment to forge his own path  independent of his family's political legacy, Xav has turned early industry intrigue into a dedicated, fast-growing movement. With thousands of global listeners amassed in such short time, he is actively carving out his own distinct space in the industry through consistent releases and a direct, unfiltered connection to his audience.
           </p>
         </div>
         <div class="polaroid-stack reveal d2">
           <div class="polaroid polaroid--bottom">
-            <img src="Xav1.png" alt="Portrait of Xav" />
+            <img src="Xav1.jpeg" alt="Portrait of Xav" />
           </div>
           <div class="polaroid polaroid--top">
-            <img src="Xav2.png" alt="Xav performing live" />
+            <img src="Xav2.JPG" alt="Xav performing live" />
           </div>
         </div>
       </div>
@@ -1444,24 +1438,41 @@
   <section class="sec" id="gallery">
     <div class="sec__in">
       <div class="sec-ttl reveal">Gallery</div>
+
+      <!-- Video -->
+      <div class="video__container reveal d1">
+        <iframe
+          src="https://www.youtube.com/embed/XVcWAkb6NaI"
+          title="Xav — Music Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+
+      <!-- if that vid fails try below-->
+      <!--div class="video__container reveal d1">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/XVcWAkb6NaI?si=E8egCeAWaQIPlMyJ"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div-->
+
+
+
+      <!-- Photos -->
       <div class="gallery__grid">
         <div class="gallery__item reveal">
-          <img src="https://picsum.photos/seed/xav-gallery-1/600/600" alt="Xav live" />
+          <img src="G2.JPEG" alt="Gallery photo 1" />
         </div>
         <div class="gallery__item reveal d1">
-          <img src="https://picsum.photos/seed/xav-gallery-2/600/600" alt="Xav in the studio" />
+          <img src="G3.JPG" alt="Gallery photo 2" />
         </div>
         <div class="gallery__item reveal d2">
-          <img src="https://picsum.photos/seed/xav-gallery-3/600/600" alt="Xav backstage" />
-        </div>
-        <div class="gallery__item reveal">
-          <img src="https://picsum.photos/seed/xav-gallery-4/600/600" alt="Xav on tour" />
-        </div>
-        <div class="gallery__item reveal d1">
-          <img src="https://picsum.photos/seed/xav-gallery-5/600/600" alt="Xav portrait" />
-        </div>
-        <div class="gallery__item reveal d2">
-          <img src="https://picsum.photos/seed/xav-gallery-6/600/600" alt="Xav performing" />
+          <img src="G4.png" alt="Gallery photo 3" />
         </div>
       </div>
     </div>
@@ -1501,12 +1512,7 @@
       </div>
       <div class="ft__bottom">
         <span class="ft__copy">&copy; 2025 Xav. All rights reserved.</span>
-        <span class="ft__made">Made by <a href="https://weblume.ca" target="_blank" rel="noopener noreferrer">Weblume</a></span>
-        <nav class="ft__legal">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Contact</a>
-        </nav>
+        <span class="ft__made">Want a site like this? Contact <a href="https://weblume.ca" target="_blank" rel="noopener noreferrer">Weblume</a></span>
       </div>
     </div>
   </footer>
