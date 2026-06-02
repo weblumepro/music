@@ -13,6 +13,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
+    body {
+      min-height: 100dvh;
+    }
+
     /* ─── Tokens ─────────────────────────────────────── */
     :root {
       --bg:         #1a1a1a;
@@ -63,6 +67,7 @@
     .btn-fill {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.55rem;
       padding: 1rem 2.5rem;
       font-family: var(--ff-b);
@@ -81,6 +86,7 @@
     .btn-ghost {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.55rem;
       padding: 1rem 2.5rem;
       font-family: var(--ff-b);
@@ -125,22 +131,20 @@
     }
 
     /* ─── NAV ────────────────────────────────────────── */
-
-        /* Ensure the image assets align perfectly and match original sizing */
     .social-icon-img {
-      width: 24px;          /* Match original vector bounding boxes */
+      width: 24px;
       height: 24px;
-      object-fit: contain;  /* Prevents icons from squishing or warping */
+      object-fit: contain;
       display: inline-block;
       vertical-align: middle;
       transition: transform 0.3s var(--ease);
     }
 
-    /* Hover effect helper since fill colors won't work on flat PNG images */
     .social-link:hover .social-icon-img {
-      transform: scale(1.15); /* Adds a subtle interactive pop when highlighted */
-      filter: brightness(1.2); /* Makes them shine slightly on dark themes */
+      transform: scale(1.15);
+      filter: brightness(1.2);
     }
+
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -173,10 +177,11 @@
       margin-left: auto;
       list-style: none;
     }
+    /* Increased nav link font size from 0.68rem to 0.85rem */
     .nav__links a {
-      font-size: 0.68rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted);
       position: relative;
@@ -254,7 +259,7 @@
     /* ─── HERO ───────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: 100dvh;
+      height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -533,8 +538,10 @@
     }
 
     /* ─── Section Shared ─────────────────────────────── */
+    /* Reduced vertical padding to tighten inter-section spacing */
     .sec {
-      padding: clamp(5rem, 9vw, 8.5rem) clamp(1.5rem, 5vw, 5rem);
+      padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 5rem);
+      scroll-margin-top: 70px;
     }
     .sec__in  { max-width: var(--max); margin: 0 auto; }
     .sec-ttl {
@@ -723,7 +730,6 @@
       transition: transform 0.5s var(--ease), filter 0.4s;
     }
 
-    /* ─── Carousel position states ── */
     .era-card.is-active,
     .era-card.is-prev,
     .era-card.is-next,
@@ -768,7 +774,6 @@
       filter: brightness(0.8) saturate(0.7);
     }
 
-    /* Hover scale on carousel cards */
     .era-card.is-prev:hover,
     .era-card.is-next:hover,
     .era-card.is-prev2:hover,
@@ -782,7 +787,6 @@
     .era-card.is-prev2 { --tx: calc(-50% - clamp(355px, 43vw, 510px)); --scale: 0.66; }
     .era-card.is-next2 { --tx: calc(-50% + clamp(355px, 43vw, 510px)); --scale: 0.66; }
 
-    /* ─── Overlay & text ─────────────────────────────── */
     .era-card__ov {
       width: 100%;
       padding-top: 0.6rem;
@@ -796,7 +800,6 @@
       width: 100%;
     }
 
-    /* Text hidden by default, transition in/out */
     .era-card__year,
     .era-card__name,
     .era-card__feat {
@@ -807,7 +810,6 @@
         transform 0.22s ease;
     }
 
-    /* Active card: staggered fade-up reveal */
     .era-card.is-active .era-card__year {
       opacity: 1;
       transform: none;
@@ -1057,16 +1059,20 @@
 
     .letter__buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.2rem;
       align-items: stretch;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
+    /* Fixed-size large buttons for the From Xav section */
     .letter__buttons .btn-fill,
     .letter__buttons .btn-ghost {
-      min-width: 180px;
-      padding: 1.1rem 2.8rem;
-      font-size: 0.8rem;
+      width: 240px;
+      height: 72px;
+      padding: 0;
+      font-size: 1rem;
+      letter-spacing: 0.16em;
       justify-content: center;
     }
 
@@ -1223,6 +1229,12 @@
       .letter__body > div      { text-align: center; }
       #letter .sec-ttl         { text-align: center; }
 
+      .letter__buttons .btn-fill,
+      .letter__buttons .btn-ghost {
+        width: 100%;
+        max-width: 320px;
+      }
+
       .ft__main                { flex-direction: column; align-items: flex-start; }
       .ft__bottom              { flex-direction: column; align-items: flex-start; }
     }
@@ -1284,7 +1296,7 @@
       <h1 class="hero__name">XAV</h1>
       <p class="hero__sub">feat. Duava</p>
       <div class="hero__btns">
-        <a href="https://open.spotify.com/search/The%20Dive%20Xav" class="btn-fill">Listen Now</a>
+        <a href="#eras" class="btn-fill">Listen Now</a>
       </div>
     </div>
     <div class="hero__scroll" aria-hidden="true">
@@ -1464,7 +1476,7 @@
         <div class="letter__cta reveal d1">
           <div class="letter__buttons">
             <a href="mailto:Matt@rp-rt.com" class="btn-fill">Inquiries</a>
-            <button class="btn-ghost" onclick="alert('Mailing list signup')">Keep me updated</button>
+            <a href="https://tr.ee/lEWNMg6seC" target="_blank" rel="noopener noreferrer" class="btn-ghost">Keep me updated</a>
           </div>
         </div>
         <div class="letter__body">
