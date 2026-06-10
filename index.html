@@ -76,7 +76,6 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: #1a1a1a;
-      background: var(--accent);
       border-radius: 1px;
       transition: background 0.2s, transform 0.15s;
     }
@@ -424,25 +423,17 @@
     .hero__photo {
       position: absolute;
       inset: 0;
-      background: url('Hero.JPEG') center center / cover no-repeat;
+      background: url('Hero.webp') center center / cover no-repeat;
     }
     .hero__photo::after {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 110% 55% at 50% -5%,
-          rgba(212, 175, 55, 0.42) 0%,
-          transparent 58%),
-        radial-gradient(ellipse 75% 85% at 50% 50%,
-          rgba(26, 26, 26, 0.08) 0%,
-          rgba(26, 26, 26, 0.55) 52%,
-          rgba(26, 26, 26, 0.97) 100%),
-        linear-gradient(to bottom,
-          rgba(26, 26, 26, 0.38) 0%,
-          rgba(26, 26, 26, 0.20) 32%,
-          rgba(26, 26, 26, 0.68) 68%,
-          rgba(26, 26, 26, 1.00) 100%);
+  radial-gradient(ellipse 110% 49.5% at 50% -5%, rgba(212, 175, 55, 0.42) 0%, transparent 58%),
+
+  radial-gradient(ellipse 75% 85% at 50% 50%, rgba(26, 26, 26, 0.08) 0%, rgba(26, 26, 26, 0.55) 52%, rgba(26, 26, 26, 0.97) 100%),
+  linear-gradient(to bottom, rgba(26, 26, 26, 0.38) 0%, rgba(26, 26, 26, 0.20) 32%, rgba(26, 26, 26, 0.68) 68%, rgba(26, 26, 26, 1.00) 100%);
     }
 
     .hero__content {
@@ -863,16 +854,52 @@
     }
 
     /* ─── BIO ────────────────────────────────────────── */
-    #bio { background: var(--bg-3); position: relative; overflow: hidden; }
+    #bio {
+      background: var(--bg-3);
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4.5rem, 10.5vw, 11.25rem) 0;
+    }
+
+    #bio__bg {
+      position: absolute;
+      inset: 0;
+      background: url('Hero3.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    #bio__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right,
+        rgba(26, 26, 26, 0.97) 0%,
+        rgba(26, 26, 26, 0.95) 8%,
+        rgba(26, 26, 26, 0.92) 18%,
+        rgba(26, 26, 26, 0.88) 30%,
+        rgba(26, 26, 26, 0.82) 45%,
+        rgba(26, 26, 26, 0.72) 60%,
+        rgba(26, 26, 26, 0.58) 75%,
+        rgba(26, 26, 26, 0.45) 88%,
+        rgba(26, 26, 26, 0.35) 100%);
+    }
+
     #bio::before {
       content: '';
       position: absolute;
       inset: 0;
+      z-index: 1;
       background:
-        radial-gradient(ellipse 50% 60% at 88% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 45% 55% at 5% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 55%);
+        radial-gradient(ellipse 65% 65% at 88% 55%, rgba(212, 175, 55, 0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 55% at 12% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
       pointer-events: none;
     }
+
+    #bio .sec__in { position: relative; z-index: 2; }
 
     .bio__layout {
       position: relative;
@@ -883,15 +910,20 @@
       margin-top: 3rem;
     }
 
+    .bio__text {
+      position: relative;
+      z-index: 3;
+    }
+
     .bio__text p {
       font-size: 1rem;
       line-height: 1.85;
-      color: var(--muted);
+      color: var(--text);
       margin-bottom: 1.4rem;
       max-width: 54ch;
     }
     .bio__text p:last-child { margin-bottom: 0; }
-    .bio__text strong { color: var(--text); font-weight: 500; }
+    .bio__text strong { color: var(--accent); font-weight: 500; }
 
     .polaroid-stack {
       position: relative;
@@ -935,7 +967,7 @@
   z-index: 2;
   /* Moved right: changed -30px to 0px */
   transform: rotate(4deg) translate(0px, 15px);
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
 
 .polaroid-stack:hover .polaroid--bottom {
@@ -975,6 +1007,59 @@
     .gallery__item:hover img {
       transform: scale(1.06);
       filter: brightness(1) saturate(1);
+    }
+
+    /* Gallery uniform grid — all items same size */
+    .gallery__grid--featured {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .gallery__grid--featured .gallery__item--wide,
+    .gallery__grid--featured .gallery__item--tall,
+    .gallery__grid--featured .gallery__item--std {
+      grid-column: auto;
+      grid-row: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Gallery overlay with subtle golden border on hover */
+    .gallery__item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid transparent;
+      transition: border-color 0.35s;
+      pointer-events: none;
+    }
+    .gallery__item:hover::after {
+      border-color: var(--accent);
+    }
+
+    /* Faster reveal for gallery items */
+    .gallery__item.reveal,
+    .video__container.reveal {
+      transition:
+        opacity  0.5s var(--ease),
+        transform 0.5s var(--ease);
+    }
+    .gallery__item.reveal.d1,
+    .video__container.reveal.d1 {
+      transition-delay: 0.08s;
+    }
+    .gallery__item.reveal.d2,
+    .video__container.reveal.d2 {
+      transition-delay: 0.16s;
+    }
+    .gallery__item.reveal.d3,
+    .video__container.reveal.d3 {
+      transition-delay: 0.24s;
+    }
+    .gallery__item.reveal.d4,
+    .video__container.reveal.d4 {
+      transition-delay: 0.32s;
     }
 
     /* ─── VIDEO ────────────────────────────────────── */
@@ -1082,6 +1167,21 @@
       font-size: 1rem;
       letter-spacing: 0.16em;
       justify-content: center;
+    }
+
+    .letter__management {
+      font-family: var(--ff-b);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    .letter__management span {
+      color: var(--accent);
     }
 
     .letter__body {
@@ -1213,10 +1313,18 @@
       .era-card.is-next2       { transform: translate(calc(-50% + clamp(245px, 63vw, 350px)), -50%) scale(0.66); }
 
       .bio__layout             { grid-template-columns: 1fr; gap: 2.75rem; justify-items: center; }
-      .bio__text p             { max-width: none; }
+      .bio__text p             { max-width: none; text-align: center; }
       .polaroid-stack          { transform: none; }
+      #bio .sec-ttl            { text-align: center; }
 
-      .gallery__grid           { grid-template-columns: repeat(2, 1fr); }
+      .gallery__grid,
+      .gallery__grid--featured { grid-template-columns: repeat(2, 1fr); }
+      .gallery__grid--featured .gallery__item--wide,
+      .gallery__grid--featured .gallery__item--tall,
+      .gallery__grid--featured .gallery__item--std {
+        grid-column: auto;
+        aspect-ratio: 1 / 1;
+      }
 
       .letter__layout          { grid-template-columns: 1fr; gap: 2rem; }
       .letter__body            { align-items: center; }
@@ -1268,6 +1376,9 @@
       <a href="https://www.facebook.com/profile.php?id=61575758736001" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-link">
         <img src="Facebook.png" alt="Facebook" class="social-icon-img" />
       </a>
+      <a href="https://x.com/xavtrud?lang=en" target="_blank" rel="noopener noreferrer" aria-label="X" class="social-link">
+        <img src="X.png" alt="X" class="social-icon-img" />
+      </a>
     </div>
     <button class="nav__burger" id="burger" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -1286,9 +1397,9 @@
   <section class="hero">
     <div class="hero__photo"></div>
     <div class="hero__content">
-      <div class="hero__eyebrow">The Dive — Out Now</div>
+      <!--div class="hero__eyebrow">The Dive — Out Now</div-->
       <h1 class="hero__name">XAV</h1>
-      <p class="hero__sub">feat. Duava</p>
+      <!--p class="hero__sub">feat. Duava</p-->
       <div class="hero__btns">
         <a href="#eras" class="btn-fill">Listen Now</a>
       </div>
@@ -1322,7 +1433,7 @@
             </span>
           </div>
           <div class="event__cta">
-            <a href="https://www.stubhub.com/jessi-cruickshank-ottawa-tickets-6-19-2026/event/160929981/?backUrl=%2Fxav-tredeau-tickets%2Fperformer%2F150641764%2Fottawa-city%2F5229&lt=45.445&lg=-75.638" target="_blank" rel="noopener noreferrer" class="btn-event">Get Tickets</a>
+            <a href="https://www.stubhub.com/jessi-cruickshank-ottawa-tickets-6-19-2026/event/160929981/?backUrl=%2Fxav-tredeau-tickets%2Fperformer%2F150641764%2Fottawa-city%2F5229&lt;=45.445&lg=-75.638" target="_blank" rel="noopener noreferrer" class="btn-event">Get Tickets</a>
           </div>
         </div>
       </div>
@@ -1414,6 +1525,7 @@
 
   <!-- ─── BIO ───────────────────────────────────────────── -->
   <section class="sec" id="bio">
+    <div id="bio__bg"></div>
     <div class="sec__in">
       <div class="sec-ttl reveal">Bio</div>
       <div class="bio__layout">
@@ -1427,7 +1539,7 @@
             <img src="Xav1.jpeg" alt="Portrait of Xav" />
           </div>
           <div class="polaroid polaroid--top">
-            <img src="Xav2.JPG" alt="Xav performing live" />
+            <img src="Xav2.png" alt="Xav performing live" />
           </div>
         </div>
       </div>
@@ -1449,30 +1561,22 @@
         ></iframe>
       </div>
 
-
-      <!-- if that vid fails try below-->
-      <!--div class="video__container reveal d1">
-        <iframe
-          src="https://www.youtube-nocookie.com/embed/XVcWAkb6NaI?si=E8egCeAWaQIPlMyJ"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div-->
-
-
-
-      <!-- Photos -->
-      <div class="gallery__grid">
-        <div class="gallery__item reveal">
-          <img src="G2.JPEG" alt="Gallery photo 1" />
+      <!-- Photos — Featured mosaic layout -->
+      <div class="gallery__grid--featured">
+        <div class="gallery__item gallery__item--wide reveal">
+          <img src="G5.JPG" alt="Gallery photo — G5" />
         </div>
-        <div class="gallery__item reveal d1">
-          <img src="G3.JPG" alt="Gallery photo 2" />
+        <div class="gallery__item gallery__item--tall reveal d1">
+          <img src="G1.png" alt="Gallery photo — G1" />
         </div>
-        <div class="gallery__item reveal d2">
-          <img src="G4.png" alt="Gallery photo 3" />
+        <div class="gallery__item gallery__item--std reveal d2">
+          <img src="G2.JPEG" alt="Gallery photo — G2" />
+        </div>
+        <div class="gallery__item gallery__item--std reveal d3">
+          <img src="G3.JPG" alt="Gallery photo — G3" />
+        </div>
+        <div class="gallery__item gallery__item--std reveal d4">
+          <img src="G4.png" alt="Gallery photo — G4" />
         </div>
       </div>
     </div>
@@ -1489,6 +1593,7 @@
             <a href="mailto:Matt@rp-rt.com" class="btn-fill">Inquiries</a>
             <a href="https://tr.ee/lEWNMg6seC" target="_blank" rel="noopener noreferrer" class="btn-ghost">Keep me updated</a>
           </div>
+          <div class="letter__management">All contacts directed to <span>RPR Team Management</span></div>
         </div>
         <div class="letter__body">
           <div>
@@ -1553,7 +1658,7 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -45px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px 0px 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
